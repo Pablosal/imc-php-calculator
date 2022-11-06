@@ -21,7 +21,7 @@
 
     function obtenerIMC($peso, $altura)
     {
-      return round($peso / $altura);
+      return round($peso / $altura,2);
     }
     function checkIMC($imc)
     {
