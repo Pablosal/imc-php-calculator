@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;">
 
 <head>
   <meta charset="UTF-8">
@@ -23,6 +26,7 @@
     function checkIMC($imc)
     {
 
+     
       if ($imc < 18.5) {
         return ['Bajo Peso', 'danger'];
       } else if ($imc >= 18.5 && $imc < 24.9) {
@@ -31,7 +35,7 @@
         return ['Sobrepeso', 'primary'];
       } else if ($imc >= 30 && $imc < 39.9) {
         return ['Obesidad', 'warning'];
-      } else if ($imc > 40) {
+      } else if ($imc >= 40) {
         return ['Obesidad Severa', 'danger'];
       }
     }
@@ -45,24 +49,30 @@
   $peso =  isset($_POST["peso"]) ?  $_POST["peso"] : 0;
   $altura = isset($_POST["altura"]) ?  ($_POST["altura"] / 100) * ($_POST["altura"] / 100)  : 0;
   $status;
-
   $imc = $IMCDeterminator->obtenerIMC($peso, $altura);
   [$status, $alert] = $IMCDeterminator->checkIMC($imc);
 
 
+
   ?>
+  <main action="imc.php" class="card container" style="width: 18rem;">
+    <div class="container card-body">
+      <h2 class="card-title text-center">Su IMC es de</h2>
+      <div class="col">
+        <h1 class="text-center">
+          <span class="badge text-bg-success "> <?php echo $imc; ?> </span>
+        </h1>
+      </div>
+      <div class=" col ">
+        <h4 class="card-title text-center">Su condicion es de </h4>
+        <div class="alert <?php echo "class= text-center alert alert-" . $alert; ?>" role="alert">
+          <?php echo $status; ?>
+        </div>
 
-  <div class="card">
-    <div class="card container">
-      <button type="button" class="btn btn-primary" >
-        IMC <span class="badge text-bg-success "> <?php echo $imc; ?> </span>
-      </button>
-
-      <div class="alert <?php echo "class= alert alert-". $alert; ?>" role="alert">
-        <?php echo $status; ?>
       </div>
     </div>
-
+    <br>
+  </main>
 
   </div>
 </body>

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;">
 
 <head>
   <meta charset="UTF-8" />
@@ -22,6 +25,7 @@
         <div class=" col ">
           <label for="peso" class="form-label">Introduzca su peso</label>
           <input type="text" name="peso" class="form-control" required />
+          <small class="text-muted">En kilos</small>
         </div>
       </div>
       <input type="submit" value="Calcular IMC" class="btn btn-success">
